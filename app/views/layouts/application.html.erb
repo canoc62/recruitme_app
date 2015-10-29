@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecruitMe</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <div class='navbar'>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <%= render 'layouts/navigation' %>
+          </div><!--/.navbar-collapse -->
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+  </div>
+</body>
+</html>
