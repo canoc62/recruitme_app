@@ -1,0 +1,26 @@
+<div>
+  <h3><%= @user.first_name %> <%= @user.last_name %>'s Profile</h3>
+</div>
+
+<div class='well'>
+  <dl class='dl-horizontal'>
+    <dt>Username:</dt>
+    <dd><%= @user.username %></dd>
+    <dt>Name:</dt>
+    <dd><%= @user.first_name %> <%= @user.last_name %><dd>
+    <dt>Age:</dt>
+    <dd><%= @user.age %><dd>  
+    <dt>Height:</dt>
+    <dd><%= @user.height %></dd>
+    <dt>Weight:</dt>
+    <dd><%= @user.weight %><dd>
+    <dt>State:</dt>
+    <dd><%= @user.state %><dd> 
+    <dt>City:</dt>
+    <dd><%= @user.city %><dd>
+    <dt>School:</dt>
+    <dd><%= @user.school %><dd>
+    <dt>Position:</dt>
+    <dd><%= @user.position %><dd>         
+  </dl>
+</div>

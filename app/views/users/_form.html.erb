@@ -6,39 +6,47 @@
     </div>
     <div class='control-group>'>
       <%= f.label :last_name %>
-      <%= f.password_field :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class='control-group>'>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+    <div class='control-group>'>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
     </div>
     <div class='control-group>'>
       <%= f.label :age %>
-      <%= f.password_field :age %>
+      <%= f.text_field :age %>
     </div>
     <div class='control-group>'>
       <%= f.label :height %>
-      <%= f.password_field :height %>
+      <%= f.text_field :height %>
     </div>
     <div class='control-group>'>
       <%= f.label :weight %>
-      <%= f.password_field :weight %>
+      <%= f.text_field :weight %>
     </div>
     <div class='control-group>'>
       <%= f.label :city %>
-      <%= f.password_field :city %>
+      <%= f.text_field :city %>
     </div>
     <div class='control-group>'>
       <%= f.label :state %>
-      <%= f.password_field :state %>
+      <%= f.text_field :state %>
     </div>
     <div class='control-group>'>
       <%= f.label :school %>
-      <%= f.password_field :school %>
+      <%= f.text_field :school %>
     </div>
     <div class='control-group>'>
       <%= f.label :year %>
-      <%= f.password_field :year %>
+      <%= f.text_field :year %>
     </div>
     <div class='control-group>'>
       <%= f.label :position %>
-      <%= f.password_field :position %>
+      <%= f.text_field :position %>
     </div>
     <%= f.submit (@user.new_record? ? 'Register' : 'Update Profile') , class: 'btn btn-success' %>
   <% end %>
