@@ -61,4 +61,5 @@ class UsersController < ApplicationController
       flash[:error] = "You must be logged into correct account."
       redirect_to root_path
     end
+  end
 end
