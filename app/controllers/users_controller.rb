@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :same_user, only: [:edit, :update]
   
   def index
     #@user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def new
@@ -26,10 +28,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def update
+    #@user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Your profile was updated!"
       redirect_to user_path(@user)
@@ -49,4 +52,13 @@ class UsersController < ApplicationController
     params.require(:user).permit!
   end
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def same_user
+    if current_user != @user
+      flash[:error] = "You must be logged into correct account."
+      redirect_to root_path
+    end
 end

@@ -7,9 +7,11 @@
         <p>
           To see an example profile, use username - "beastmode10" and password - "password".
         </p>
-        <p><!--<a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a>-->
-          <%= link_to 'Register', new_user_path, class: 'btn btn-primary btn-lrg' %>
-        </p>
+        <% if !logged_in? %>
+          <p><!--<a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a>-->
+            <%= link_to 'Register', new_user_path, class: 'btn btn-primary btn-lrg' %>
+          </p>
+        <% end %>
       </div>
     </div>
 

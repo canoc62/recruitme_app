@@ -8,6 +8,8 @@
     <dd><%= @user.username %></dd>
     <dt>Name:</dt>
     <dd><%= @user.first_name %> <%= @user.last_name %><dd>
+    <dt>Email:</dt>
+    <dd><%= @user.email %></dd>
     <dt>Age:</dt>
     <dd><%= @user.age %><dd>  
     <dt>Height:</dt>
@@ -20,7 +22,13 @@
     <dd><%= @user.city %><dd>
     <dt>School:</dt>
     <dd><%= @user.school %><dd>
+    <dt>Year:</dt>
+    <dd><%= @user.year %><dd>   
     <dt>Position:</dt>
-    <dd><%= @user.position %><dd>         
+    <dd>
+      <% @user.positions.each do |p|%>
+      <%= p.position_title %>
+      <% end %>
+    <dd>         
   </dl>
 </div>

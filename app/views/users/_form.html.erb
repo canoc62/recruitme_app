@@ -17,6 +17,10 @@
       <%= f.password_field :password %>
     </div>
     <div class='control-group>'>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class='control-group>'>
       <%= f.label :age %>
       <%= f.text_field :age %>
     </div>
@@ -46,7 +50,7 @@
     </div>
     <div class='control-group>'>
       <%= f.label :position %>
-      <%= f.text_field :position %>
+      <%= f.collection_select(:position_ids, Position.all, :id, :position_title, {}, {:multiple => true}) %>
     </div>
     <%= f.submit (@user.new_record? ? 'Register' : 'Update Profile') , class: 'btn btn-success' %>
   <% end %>
