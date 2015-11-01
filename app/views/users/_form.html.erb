@@ -46,9 +46,7 @@
     </div>
     <div class='control-group>'>
       <%= f.label :school_year %>
-        <%= f.fields_for :school_year, @user.build_school_year do |y| %>
-        <%= y.collection_select(:id, SchoolYear.all, :id, :school_year) %>
-      <% end %>
+      <%= f.collection_select(:school_year_id, SchoolYear.all, :id, :year) %>
     </div>
     <div class='control-group>'>
       <%= f.label :position %>
