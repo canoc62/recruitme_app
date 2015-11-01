@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101132521) do
+ActiveRecord::Schema.define(version: 20151101132951) do
 
   create_table "player_positions", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20151101132521) do
     t.string   "year"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
