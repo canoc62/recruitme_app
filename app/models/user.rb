@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :player_positions
   has_many :positions, through: :player_positions
+  has_one :school_year
+  accepts_nested_attributes_for :school_year
 
   has_secure_password validations: false
   validates :password, presence: true, on: :create, length: {minimum: 5}

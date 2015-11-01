@@ -45,8 +45,10 @@
       <%= f.text_field :school %>
     </div>
     <div class='control-group>'>
-      <%= f.label :year %>
-      <%= f.text_field :year %>
+      <%= f.label :school_year %>
+        <%= f.fields_for :school_year, @user.build_school_year do |y| %>
+        <%= y.collection_select(:id, SchoolYear.all, :id, :school_year) %>
+      <% end %>
     </div>
     <div class='control-group>'>
       <%= f.label :position %>
