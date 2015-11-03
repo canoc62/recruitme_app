@@ -3,11 +3,9 @@ class UsersController < ApplicationController
   before_action :same_user, only: [:edit, :update]
   
   def index
-    
   end
 
   def show
-   
   end
 
   def new
@@ -28,7 +26,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-  
   end
 
   def update
