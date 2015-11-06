@@ -1,0 +1,45 @@
+-game_stat will have a partial view of how each game will display stats on user page
+-title of game (vs. opponent) will be a link to show game_stat page, which will have a link to edit game_stat
+-there will be a header in partial and to the right of title (ex. Freshman stats) will be a link to a create new game_stat
+
+user has_many game_stats
+game_stat belongs_to user
+stats:
+opponent
+pass attempts
+pass yards
+pass tds
+rush attempts
+rush yards 
+rush tds
+catches
+receiving yards
+receiving tds
+tackles
+sacks
+interceptions
+FGA
+FGM
+PAT attempts
+PAT made
+
+player has many positions, position has many players
+
+position types
+QB, RB, WR, TE, DT, DE, ILB, OLB, CB, FS, SS, ATH
+
+Home page
+-welcome
+-login link
+-register link
+
+Profile page
+-position
+-height
+-weight
+-school
+-age
+-name
+-last name
+-city
+-state

@@ -26,37 +26,3 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
-
-associations:
-player has many game_stat_sheets
-stats:
-pass yards
-pass tds
-rush yards 
-rush tds
-receiving yards
-receiving tds
-tackles
-sacks
-interceptions
-
-player has many positions, position has many players
-
-position types
-QB, RB, WR, TE, DT, DE, ILB, OLB, CB, FS, SS, ATH
-
-Home page
--welcome
--login link
--register link
-
-Profile page
--position
--height
--weight
--school
--age
--name
--last name
--city
--state
