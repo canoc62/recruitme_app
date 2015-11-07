@@ -1,8 +1,8 @@
 <div class= 'well'>
-  <%= form_for [@user, @game_stat] do |f| %>
+  <%= form_for [@user, @game_stat], :url => {:controller => 'game_stats', :action => 'create'}  do |f| %>
     <div class='control-group'>
       <%= f.label :date %>
-      <%= f.date_field :date_time %>
+      <%= f.date_field :date %>
     </div>
     <div class='control-group>'>
       <%= f.label :opponent %>
@@ -49,7 +49,7 @@
       <%= f.text_field :receiving_tds %>
     </div>
     <div class='control-group>'>
-      <%= f.label :fubmles %>
+      <%= f.label :fumbles %>
       <%= f.text_field :fumbles %>
     </div>
     <div class='control-group>'>
