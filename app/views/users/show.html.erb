@@ -32,3 +32,38 @@
     <dd>         
   </dl>
 </div>
+
+<h5><%= @user.username %>'s Statistics</h5>
+
+<ul class='nav nav-tabs'>
+  <li class='<%= 'active' if params[:tab].nil? %>'>
+    <%= link_to "Freshman Stats", user_path(@user) %>
+  </li>
+  <li class='<%= 'active' if params[:tab] == 'sophomore' %>'>
+    <%= link_to "Sophomore Stats", user_path(@user, tab: 'sophomore') %>
+  </li>
+  <li class='<%= 'active' if params[:tab] == 'junior' %>'>
+    <%= link_to "Junior Stats", user_path(@user, tab: 'junior') %>
+  </li>
+  <li class='<%= 'active' if params[:tab] == 'senior' %>'>
+    <%= link_to "Senior Stats", user_path(@user, tab: 'senior') %>
+  </li>
+</ul>
+
+<% if params[:tab].nil? %>
+  <header>
+    Freshman Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+  </header>
+<% elsif params[:tab] == 'sophomore' %>
+  <header>
+    Sophomore Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+  </header>
+<% elsif params[:tab] == 'junior' %>
+  <header>
+    Junior Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+  </header>
+<% elsif params[:tab] == 'senior' %>
+  <header>
+    Senior Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+  </header>
+<% end %>
