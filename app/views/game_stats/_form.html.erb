@@ -1,5 +1,5 @@
 <div class= 'well'>
-  <%= form_for [@user, @game_stat], :url => {:controller => 'game_stats', :action => 'create'}  do |f| %>
+  <%= form_for [@user, @game_stat], url: new_user_game_stat_path  do |f| %>
     <div class='control-group'>
       <%= f.label :date %>
       <%= f.date_field :date %>
@@ -10,79 +10,79 @@
     </div>
     <div class='control-group>'>
       <%= f.label :pass_attempts %>
-      <%= f.text_field :pass_attempts %>
+      <%= f.number_field :pass_attempts %>
     </div>
     <div class='control-group>'>
       <%= f.label :pass_yards %>
-      <%= f.text_field :pass_yards %>
+      <%= f.number_field :pass_yards %>
     </div>
     <div class='control-group>'>
       <%= f.label :pass_tds %>
-      <%= f.text_field :pass_tds %>
+      <%= f.number_field :pass_tds %>
     </div>
     <div class='control-group>'>
       <%= f.label :pass_int %>
-      <%= f.text_field :pass_int %>
+      <%= f.number_field :pass_int %>
     </div>
     <div class='control-group>'>
       <%= f.label :rush_attempts %>
-      <%= f.text_field :rush_attempts %>
+      <%= f.number_field :rush_attempts %>
     </div>
     <div class='control-group>'>
       <%= f.label :rush_yards %>
-      <%= f.text_field :rush_yards %>
+      <%= f.number_field :rush_yards %>
     </div>
     <div class='control-group>'>
       <%= f.label :rush_tds %>
-      <%= f.text_field :rush_tds %>
+      <%= f.number_field :rush_tds %>
     </div>
     <div class='control-group>'>
       <%= f.label :receptions %>
-      <%= f.text_field :receptions %>
+      <%= f.number_field :receptions %>
     </div>
     <div class='control-group>'>
       <%= f.label :receiving_yards %>
-      <%= f.text_field :receiving_yards %>
+      <%= f.number_field :receiving_yards %>
     </div>
     <div class='control-group>'>
       <%= f.label :receiving_tds %>
-      <%= f.text_field :receiving_tds %>
+      <%= f.number_field :receiving_tds %>
     </div>
     <div class='control-group>'>
       <%= f.label :fumbles %>
-      <%= f.text_field :fumbles %>
+      <%= f.number_field :fumbles %>
     </div>
     <div class='control-group>'>
       <%= f.label :fumbles_lost%>
-      <%= f.text_field :fumbles_lost %>
+      <%= f.number_field :fumbles_lost %>
     </div>
     <div class='control-group>'>
       <%= f.label :tackles %>
-      <%= f.text_field :tackles %>
+      <%= f.number_field :tackles %>
     </div>
     <div class='control-group>'>
       <%= f.label :sacks %>
-      <%= f.text_field :sacks %>
+      <%= f.number_field :sacks %>
     </div>
     <div class='control-group>'>
       <%= f.label :interceptions %>
-      <%= f.text_field :interceptions %>
+      <%= f.number_field :interceptions %>
     </div>
     <div class='control-group>'>
       <%= f.label :field_goal_attempts %>
-      <%= f.text_field :field_goal_attempts %>
+      <%= f.number_field :field_goal_attempts %>
     </div>
     <div class='control-group>'>
       <%= f.label :field_goals_made %>
-      <%= f.text_field :field_goals_made %>
+      <%= f.number_field :field_goals_made %>
     </div>
     <div class='control-group>'>
       <%= f.label :pat_attempts %>
-      <%= f.text_field :pat_attempts %>
+      <%= f.number_field :pat_attempts %>
     </div>
     <div class='control-group>'>
       <%= f.label :pat_made %>
-      <%= f.text_field :pat_made %>
+      <%= f.number_field :pat_made %>
     </div>
     <%= f.submit (@game_stat.new_record? ? 'Submit Stats' : 'Update Stats') , class: 'btn btn-success' %>
   <% end %>
