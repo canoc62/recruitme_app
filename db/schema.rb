@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107113218) do
+ActiveRecord::Schema.define(version: 20151108194349) do
 
   create_table "game_stats", force: :cascade do |t|
     t.string   "opponent"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20151107113218) do
     t.integer  "pass_int"
     t.integer  "receiving_yards"
     t.integer  "field_goal_attempts"
+    t.integer  "pass_completions"
   end
 
   create_table "player_positions", force: :cascade do |t|
