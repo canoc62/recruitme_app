@@ -52,19 +52,19 @@
 
 <% if params[:tab].nil? %>
   <header>
-    Freshman Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+    Freshman Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in?%>
   </header>
   <%= render 'user_game_stats' %>
 <% elsif params[:tab] == 'sophomore' %>
   <header>
-    Sophomore Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+    Sophomore Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in? %>
   </header>
 <% elsif params[:tab] == 'junior' %>
   <header>
-    Junior Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+    Junior Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in? %>
   </header>
 <% elsif params[:tab] == 'senior' %>
   <header>
-    Senior Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
+    Senior Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in? %>
   </header>
 <% end %>

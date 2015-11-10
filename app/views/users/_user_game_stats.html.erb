@@ -22,9 +22,33 @@
     <td>FGM</td>
     <td>PAT Att</td>
     <td>PAT Made</td>
+    <% if !@user.game_stats.nil? %>
+      <% @user.game_stats.each do |game_stat| %>
+        <tr>
+          <td><%= game_stat.date unless game_stat.date.nil? %></td>
+          <td><%= game_stat.opponent unless game_stat.opponent.nil? %></td>
+          <td><%= game_stat.pass_attempts unless game_stat.pass_attempts.nil? %></td>
+          <td><%= game_stat.pass_completions unless game_stat.pass_completions.nil? %></td>
+          <td><%= game_stat.pass_yards unless game_stat.pass_yards.nil? %></td>
+          <td><%= game_stat.pass_tds unless game_stat.pass_tds.nil? %></td>
+          <td><%= game_stat.pass_int unless game_stat.pass_int.nil? %></td>
+          <td><%= game_stat.rush_attempts unless game_stat.rush_attempts.nil? %></td>
+          <td><%= game_stat.rush_yards unless game_stat.rush_yards.nil? %></td>
+          <td><%= game_stat.rush_tds unless game_stat.rush_tds.nil? %></td>
+          <td><%= game_stat.receptions unless game_stat.receptions.nil? %></td>
+          <td><%= game_stat.receiving_yards unless game_stat.receiving_yards.nil? %></td>
+          <td><%= game_stat.receiving_tds unless game_stat.receiving_yards.nil? %></td>
+          <td><%= game_stat.fumbles unless game_stat.fumbles.nil? %></td>
+          <td><%= game_stat.fumbles_lost unless game_stat.fumbles_lost.nil? %></td>
+          <td><%= game_stat.tackles unless game_stat.tackles.nil? %> </td>
+          <td><%= game_stat.sacks unless game_stat.sacks.nil? %> </td>
+          <td><%= game_stat.interceptions unless game_stat.interceptions.nil? %></td>
+          <td><%= game_stat.field_goal_attempts unless game_stat.field_goal_attempts.nil? %></td>
+          <td><%= game_stat.field_goals_made unless game_stat.field_goals_made.nil? %></td>
+          <td><%= game_stat.pat_attempts unless game_stat.pat_attempts.nil? %></td>
+          <td><%= game_stat.pat_made unless game_stat.pat_made.nil? %></td>
+        </tr>
+      <% end %>
+    <% end %>
   </tr>
 </table>
-
-<% if !@user.game_stats.nil? %>
-    
-<% end %>

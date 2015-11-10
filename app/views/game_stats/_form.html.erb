@@ -1,5 +1,5 @@
 <div class= 'well'>
-  <%= form_for [@user, @game_stat], url: new_user_game_stat_path  do |f| %>
+  <%= form_for [@user, @game_stat], :url => {:controller => 'game_stats', :action => 'create'}  do |f| %>
     <div class='control-group'>
       <%= f.label :date %>
       <%= f.date_field :date %>
