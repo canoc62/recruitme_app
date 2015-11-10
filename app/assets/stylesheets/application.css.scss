@@ -16,4 +16,16 @@
 
 @import "bootstrap";
 
+.user_game_stat_table { 
+  border: outset 1px rgb(128, 128, 128)
+}
 
+td {
+  width: 50px; height: 50px;
+  vertical-align: middle;
+  border: inset 1px rgb(128, 128, 128)
+}
+
+tr {
+  text-align: center;
+}

@@ -54,6 +54,7 @@
   <header>
     Freshman Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
   </header>
+  <%= render 'user_game_stats' %>
 <% elsif params[:tab] == 'sophomore' %>
   <header>
     Sophomore Stats <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) %>
