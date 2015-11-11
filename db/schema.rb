@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111005714) do
+ActiveRecord::Schema.define(version: 20151111130615) do
 
   create_table "game_stats", force: :cascade do |t|
     t.string   "opponent"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151111005714) do
     t.string   "password_digest"
     t.string   "email"
     t.integer  "school_year_id"
+    t.float    "gpa"
   end
 
 end

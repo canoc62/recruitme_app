@@ -49,6 +49,10 @@
       <%= f.collection_select(:school_year_id, SchoolYear.all, :id, :year) %>
     </div>
     <div class='control-group>'>
+      <%= f.label :gpa %>
+      <%= f.number_field :gpa, step: 'any' %>
+    </div>
+    <div class='control-group>'>
       <%= f.label :position %><b>(s)</b>
       <%= f.collection_select(:position_ids, Position.all, :id, :position_title, {}, {:multiple => true}) %>
     </div>
