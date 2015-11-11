@@ -46,3 +46,10 @@ Profile page
 -last name
 -city
 -state
+
+
+:url => {:controller => 'game_stats', :action => 'create'}
+
+<% if logged_in? %>
+            <td><%= #link_to "Edit"#, edit_user_game_stat_path(game_stat) %></td>
+          <% end %>

@@ -1,6 +1,9 @@
 <table id="user_game_stat_table">
 
   <tr>
+    <!--<%  logged_in? %>
+    <td></td>
+    <% %>-->
     <td>Year</td>
     <td>Date</td>
     <td>Opponent</td>
@@ -30,6 +33,7 @@
     <% @user.game_stats.each do |game_stat| %>
       <% if game_stat.game_stat_year == year %>
         <tr>
+          
           <td><%= game_stat.game_stat_year unless game_stat.game_stat_year.nil? %></td>
           <td><%= game_stat.date unless game_stat.date.nil? %></td>
           <td><%= game_stat.opponent unless game_stat.opponent.nil? %></td>
