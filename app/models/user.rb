@@ -14,4 +14,16 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :school, presence: true
+
+
+
+  def total_stat_category(year, category)
+    total = 0
+    self.game_stats.each do |game_stat|
+      if game_stat.game_stat_year == year
+        total += game_stat.read_attribute(category) if !game_stat.read_attribute(category).nil?
+      end
+    end
+    total
+  end
 end

@@ -1,5 +1,7 @@
 <table id="user_game_stat_table">
+
   <tr>
+    <td>Year</td>
     <td>Date</td>
     <td>Opponent</td>
     <td>Pass Att</td>
@@ -22,9 +24,13 @@
     <td>FGM</td>
     <td>PAT Att</td>
     <td>PAT Made</td>
-    <% if !@user.game_stats.nil? %>
-      <% @user.game_stats.each do |game_stat| %>
+  </tr>
+
+  <% if !@user.game_stats.nil? %>
+    <% @user.game_stats.each do |game_stat| %>
+      <% if game_stat.game_stat_year == year %>
         <tr>
+          <td><%= game_stat.game_stat_year unless game_stat.game_stat_year.nil? %></td>
           <td><%= game_stat.date unless game_stat.date.nil? %></td>
           <td><%= game_stat.opponent unless game_stat.opponent.nil? %></td>
           <td><%= game_stat.pass_attempts unless game_stat.pass_attempts.nil? %></td>
@@ -37,7 +43,7 @@
           <td><%= game_stat.rush_tds unless game_stat.rush_tds.nil? %></td>
           <td><%= game_stat.receptions unless game_stat.receptions.nil? %></td>
           <td><%= game_stat.receiving_yards unless game_stat.receiving_yards.nil? %></td>
-          <td><%= game_stat.receiving_tds unless game_stat.receiving_yards.nil? %></td>
+          <td><%= game_stat.receiving_tds unless game_stat.receiving_tds.nil? %></td>
           <td><%= game_stat.fumbles unless game_stat.fumbles.nil? %></td>
           <td><%= game_stat.fumbles_lost unless game_stat.fumbles_lost.nil? %></td>
           <td><%= game_stat.tackles unless game_stat.tackles.nil? %> </td>
@@ -48,7 +54,35 @@
           <td><%= game_stat.pat_attempts unless game_stat.pat_attempts.nil? %></td>
           <td><%= game_stat.pat_made unless game_stat.pat_made.nil? %></td>
         </tr>
+
       <% end %>
     <% end %>
-  </tr>
+  <% end %>
+ 
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td><%= @user.total_stat_category(year, "pass_attempts") %></td>
+    <td><%= @user.total_stat_category(year, "pass_completions") %></td>
+    <td><%= @user.total_stat_category(year, "pass_yards") %></td>
+    <td><%= @user.total_stat_category(year, "pass_tds") %></td>
+    <td><%= @user.total_stat_category(year, "pass_int") %></td>
+    <td><%= @user.total_stat_category(year, "rush_attempts") %></td>
+    <td><%= @user.total_stat_category(year, "rush_yards") %></td>
+    <td><%= @user.total_stat_category(year, "rush_tds") %></td>
+    <td><%= @user.total_stat_category(year, "receptions") %></td>
+    <td><%= @user.total_stat_category(year, "receiving_yards") %></td>
+    <td><%= @user.total_stat_category(year, "receiving_tds") %></td>
+    <td><%= @user.total_stat_category(year, "fumbles") %></td>
+    <td><%= @user.total_stat_category(year, "fumbles_lost") %></td>
+    <td><%= @user.total_stat_category(year, "tackles") %></td>
+    <td><%= @user.total_stat_category(year, "sacks") %></td>
+    <td><%= @user.total_stat_category(year, "interceptions") %></td>
+    <td><%= @user.total_stat_category(year, "field_goal_attempts") %></td>
+    <td><%= @user.total_stat_category(year, "field_goals_made") %></td>
+    <td><%= @user.total_stat_category(year, "pat_attempts") %></td>
+    <td><%= @user.total_stat_category(year, "pat_made") %></td>
+  </tr> 
+
 </table>
