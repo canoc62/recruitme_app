@@ -1,9 +1,9 @@
 <table id="user_game_stat_table">
 
   <tr>
-    <!--<%  logged_in? %>
-    <td></td>
-    <% %>-->
+    <% if logged_in? %>
+      <td></td>
+    <% end %>
     <td>Year</td>
     <td>Date</td>
     <td>Opponent</td>
@@ -33,7 +33,9 @@
     <% @user.game_stats.each do |game_stat| %>
       <% if game_stat.game_stat_year == year %>
         <tr>
-          
+          <% if logged_in? %>
+            <td><%= link_to "Edit", edit_user_game_stat_path(current_user, game_stat) %></td>
+          <% end %>
           <td><%= game_stat.game_stat_year unless game_stat.game_stat_year.nil? %></td>
           <td><%= game_stat.date unless game_stat.date.nil? %></td>
           <td><%= game_stat.opponent unless game_stat.opponent.nil? %></td>
@@ -66,6 +68,9 @@
   <tr>
     <td></td>
     <td></td>
+    <% if logged_in? %>
+      <td></td>
+    <% end %>
     <td>Total</td>
     <td><%= @user.total_stat_category(year, "pass_attempts") %></td>
     <td><%= @user.total_stat_category(year, "pass_completions") %></td>
