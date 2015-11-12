@@ -3,6 +3,7 @@ class GameStatsController < ApplicationController
 
   def new
     @game_stat = GameStat.new
+    #@user = current_user, putting @user in _user_game_stats.html.erb still breaks, just put current_user directly in form.
   end
 
   def create
@@ -27,7 +28,7 @@ class GameStatsController < ApplicationController
 
     if @game_stat.update(game_stat_params)
       flash[:notice] = "Your statistics have been updated."
-      redirect_to user_show
+      redirect_to user_path(current_user)
     else
       flash[:error] = "There was an error in the submission."
     end   

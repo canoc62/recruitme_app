@@ -1,5 +1,5 @@
 <div class= 'well'>
-  <%= form_for [@user, @game_stat], :url => {:controller => 'game_stats', :action => 'create'} do |f| %>
+  <%= form_for [current_user, @game_stat] do |f| %>
     <div class='control-group'>
       <%= f.label :game_stat_year %>
       <%= f.select :game_stat_year, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"]) %>
