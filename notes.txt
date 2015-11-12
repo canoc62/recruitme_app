@@ -48,8 +48,10 @@ Profile page
 -state
 
 
-:url => {:controller => 'game_stats', :action => 'create'}
-
-<% if logged_in? %>
-            <td><%= #link_to "Edit"#, edit_user_game_stat_path(game_stat) %></td>
-          <% end %>
+To add:
+averages in stats
+slugs
+sort game stats by date
+avatars for profiles
+measurables
+videos
