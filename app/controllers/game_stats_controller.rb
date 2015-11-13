@@ -2,15 +2,16 @@ class GameStatsController < ApplicationController
   before_action :set_game_stat, only: [:edit, :update]
 
   def new
+    
+    @user = User.find(params[:user_id])
     @game_stat = GameStat.new
-    #@user = current_user, putting @user in _user_game_stats.html.erb still breaks, just put current_user directly in form.
+    #@user = current_user#, putting @user in _user_game_stats.html.erb still breaks, just put current_user directly in form.
   end
 
   def create
-    #@user = User.find(params[:id])
     @game_stat = GameStat.new(game_stat_params)
     @game_stat.user = current_user 
-
+    #@game_stat.user = User.find(params[:user_id])
     if @game_stat.save
       flash[:notice] = "Your statistics have been saved."
       redirect_to user_path(@game_stat.user)
@@ -21,7 +22,7 @@ class GameStatsController < ApplicationController
   end
 
   def edit
-  
+    @user = User.find(params[:user_id])
   end
 
   def update
