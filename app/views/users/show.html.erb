@@ -2,6 +2,12 @@
   <h3><%= @user.first_name %> <%= @user.last_name %>'s Profile</h3>
 </div>
 
+<div class="row">
+  <aside class="col-md-4">
+    <h1> <%= gravatar_for(@user) %> </h1>
+  </aside>
+</div>
+
 <div class='well'>
   <dl class='dl-horizontal'>
     <dt>Username:</dt>
