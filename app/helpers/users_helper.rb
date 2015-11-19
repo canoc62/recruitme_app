@@ -5,4 +5,8 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
     image_tag(gravatar_url, alt: user.username, class: "gravatar")
   end
+
+  def same_profile?
+    current_user.id == params[:id].to_i
+  end
 end

@@ -49,6 +49,7 @@ Profile page
 
 
 To add:
+require same user 
 averages in stats
 slugs
 sort game stats by date
