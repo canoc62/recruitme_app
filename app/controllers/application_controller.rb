@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def going_to_login
-  end
-
   def logged_in?
     !!current_user
   end

@@ -49,10 +49,12 @@ Profile page
 
 
 To add:
-require same user 
+require same user-done
 averages in stats
 slugs
 sort game stats by date
-avatars for profiles
+avatars for profiles-done
 measurables
 videos
+search players
+player index
