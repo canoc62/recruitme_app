@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    #binding.pry
+  
   end
 
   def new
@@ -46,7 +46,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    #params.require(:user).permit!
     params.require(:user).permit(:first_name, :last_name, :password, :age, :height, :weight, :city, :state, :school, :gpa, :username, :email, :school_year_id, position_ids: [])#, game_stat_ids: [])
   end
 
