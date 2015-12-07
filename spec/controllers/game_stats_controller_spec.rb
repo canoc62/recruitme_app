@@ -12,7 +12,7 @@ describe GameStatsController do
 
     context "with authenticated users" do
       let(:user) { Fabricate(:user) }
-      before { session[:user_id] = user.id }
+      before { set_current_user(user) }
         
       it "sets the @user instance variable" do
         get :new, user_id: user.id
@@ -36,7 +36,7 @@ describe GameStatsController do
   describe "POST create" do
     context "with authenticated users" do
       let(:user) { Fabricate(:user) }
-      before { session[:user_id] = user.id }
+      before { set_current_user(user) }
     
       
       context "with valid input" do
@@ -105,7 +105,7 @@ describe GameStatsController do
     context "with authenticated users" do
       let(:user) { Fabricate(:user) }
       let(:game_stat) { Fabricate(:game_stat) }
-      before { session[:user_id] = user.id }
+      before { set_current_user(user) }
 
       it "sets the @user instance variable" do
         get :edit, user_id: user.id, id: game_stat.id
@@ -140,7 +140,7 @@ describe GameStatsController do
 
     context "with authenticated users" do
       before do 
-        session[:user_id] = user.id
+        set_current_user(user)
         user.game_stats << game_stat 
       end
 

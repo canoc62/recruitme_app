@@ -33,7 +33,7 @@ describe SessionsController do
   describe "GET destroy" do
     let(:user) {Fabricate(:user)}
     before do 
-      session[:user_id] = user.id
+      set_current_user(user)
       get :destroy 
     end
 

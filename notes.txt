@@ -60,4 +60,4 @@ search players
 player index
 destroy users
 
--create a shared example for showing flash error and the redirecting to roor for specs?
+-create a shared example for showing flash error and the redirecting to roor for specs?, sign in macro?

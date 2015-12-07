@@ -74,7 +74,7 @@ describe UsersController do
     end
 
     context "with authenticated users" do
-      before { session[:user_id] = user.id }
+      before { set_current_user(user) }
 
       it "sets the @user instance variable" do
         get :edit, id: user.id
@@ -94,6 +94,7 @@ describe UsersController do
     context "with unauthenticated users" do
       let(:user) { Fabricate(:user) }
       before { patch :update, id: user.id }
+
       it "redirects to the root path" do
         expect(response).to redirect_to root_path
       end
@@ -107,7 +108,7 @@ describe UsersController do
       context "with valid input" do 
         let(:user) { Fabricate(:user) }
         before do
-          session[:user_id] = user.id
+          set_current_user(user)
           patch :update, id: user.id, user: Fabricate.attributes_for(:user, first_name: "Jordan")
         end
 
@@ -129,7 +130,7 @@ describe UsersController do
       context "with invalid input" do
         let(:user) { Fabricate(:user, first_name: "Chris") }
         before do
-          session[:user_id] = user.id
+          set_current_user(user)
           patch :update, id: user.id, user: Fabricate.attributes_for(:user, first_name: "")
         end
 
