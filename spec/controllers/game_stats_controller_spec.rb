@@ -4,16 +4,10 @@ describe GameStatsController do
 
   describe "GET new" do
     context "with unauthenticated users" do
-      it "redirects to the root path" do
-        user = Fabricate(:user)
-        get :new, user_id: user.id
-        expect(response).to redirect_to root_path
-      end
-      it "shows the flash error message" do
-        user = Fabricate(:user)
-        get :new, user_id: user.id
-        expect(flash[:error]).not_to be_empty
-      end
+      let(:user) { Fabricate(:user) }
+      before { get :new, user_id: user.id }
+
+      it_behaves_like "show error and go to root"
     end
 
     context "with authenticated users" do
@@ -34,12 +28,7 @@ describe GameStatsController do
         let(:user_2) { Fabricate(:user) }
         before { get :new, user_id: user_2.id }
         
-        it "shows the flash error message" do
-          expect(flash[:error]).not_to be_empty
-        end
-        it "redirects to root path" do 
-          expect(response).to redirect_to root_path
-        end
+        it_behaves_like "show error and go to root"
       end
     end
   end
@@ -73,12 +62,7 @@ describe GameStatsController do
           post :create, user_id: user_2.id, game_stat: Fabricate.attributes_for(:game_stat, user_id: user_2.id)
         end
 
-        it "shows the flash error message" do
-          expect(flash[:error]).not_to be_empty
-        end
-        it "redirects to root path" do 
-          expect(response).to redirect_to root_path
-        end
+        it_behaves_like "show error and go to root"
       end
 
       context "with invalid input" do
@@ -124,12 +108,12 @@ describe GameStatsController do
       before { session[:user_id] = user.id }
 
       it "sets the @user instance variable" do
-        get :new, user_id: user.id, id: game_stat.id
-        expect(assigns(:user)).to be_instance_of(User)
+        get :edit, user_id: user.id, id: game_stat.id
+        expect(assigns(:user)).to eq(user)
       end
       it "sets the @game_stat instance variable" do
-        get :new, user_id: user.id, id: game_stat.id
-        expect(assigns(:game_stat)).to be_instance_of(GameStat)
+        get :edit, user_id: user.id, id: game_stat.id
+        expect(assigns(:game_stat)).to eq(game_stat)
       end
 
       context "trying to access edit page of other users" do
@@ -140,20 +124,13 @@ describe GameStatsController do
           get :edit, user_id: user_2.id, id: game_stat_2.id
         end
 
-        it "shows the flash error message" do
-          expect(flash[:error]).not_to be_empty
-        end
-        it "redirects to root path" do 
-          expect(response).to redirect_to root_path
-        end
+        it_behaves_like "show error and go to root"
       end
     end
 
     context "with unauthenticated users" do
-      it "redirects to the root path" do
-        get :new, user_id: user.id, id: game_stat.id
-        expect(response).to redirect_to root_path
-      end
+      before { get :edit, user_id: user.id, id: game_stat.id }
+      it_behaves_like "show error and go to root"
     end
   end
 
@@ -191,12 +168,7 @@ describe GameStatsController do
         it "should not update another user's game stat" do
           expect(user_2.game_stats.first.opponent).to eq("Bishop Amat")
         end
-        it "shows the flash error message" do
-          expect(flash[:error]).not_to be_empty
-        end
-        it "redirects to root path" do 
-          expect(response).to redirect_to root_path
-        end
+        it_behaves_like "show error and go to root"
       end
 
       context "with invalid input" do
@@ -227,12 +199,7 @@ describe GameStatsController do
         patch :update, user_id: user.id, id: game_stat.id, game_stat: Fabricate.attributes_for(:game_stat, opponent: "")
       end
 
-      it "shows the flash error message" do
-        expect(flash[:error]).not_to be_empty
-      end
-      it "redirects to the root path" do
-        expect(response).to redirect_to root_path
-      end
+      it_behaves_like "show error and go to root"
     end
   end
 end

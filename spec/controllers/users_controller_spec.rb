@@ -80,23 +80,18 @@ describe UsersController do
         get :edit, id: user.id
         expect(assigns(:user)).to be_instance_of(User)
       end
-      
+
       context "trying to access the user edit page of other users" do
         let(:user_2) { Fabricate(:user) }
         before { get :edit, id: user_2.id }
-            
-        it "shows the flash error message" do
-          expect(flash[:error]).not_to be_empty
-        end
-        it "redirects to root path" do
-          expect(response).to redirect_to root_path
-        end
+
+        it_behaves_like "show error and go to root" 
       end
     end
   end
 
   describe "PATCH update" do
-    context "with unauthenticated" do
+    context "with unauthenticated users" do
       let(:user) { Fabricate(:user) }
       before { patch :update, id: user.id }
       it "redirects to the root path" do
@@ -127,12 +122,7 @@ describe UsersController do
           let(:user_2) { Fabricate(:user) }
           before { patch :update, id: user_2.id }
 
-          it "shows the flash error message" do
-            expect(flash[:error]).not_to be_empty
-          end
-          it "redirects to root path" do
-            expect(response).to redirect_to root_path
-          end
+          it_behaves_like "show error and go to root"
         end
       end
 

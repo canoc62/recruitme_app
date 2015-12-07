@@ -26,12 +26,7 @@ describe SessionsController do
       it "does not put the user in a session" do
         expect(session[:user_id]).to be_nil
       end
-      it "redirects to the root path" do
-        expect(response).to redirect_to root_path
-      end
-      it "renders the error message" do
-        expect(flash[:error]).not_to be_blank
-      end
+      it_behaves_like "show error and go to root"
     end
   end
 
