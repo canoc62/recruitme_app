@@ -1,26 +1,28 @@
 class GameStatsController < ApplicationController
+  before_action :set_game_stat_user
   before_action :set_game_stat, only: [:edit, :update]
+  before_action :require_user
+  before_action :same_user
 
   def new
-    @user = User.find(params[:user_id])
     @game_stat = GameStat.new
   end
 
   def create
     @game_stat = GameStat.new(game_stat_params)
-    @game_stat.user = current_user 
+    @game_stat.user = current_user
    
     if @game_stat.save
       flash[:notice] = "Your statistics have been saved."
       redirect_to user_path(@game_stat.user)
     else
-      flash[:error] = "There was an error in the submission."
+      flash[:error] = "Opponent, date, and year must be filled or selected."
       render :new
     end
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    
   end
 
   def update
@@ -29,7 +31,8 @@ class GameStatsController < ApplicationController
       flash[:notice] = "Your statistics have been updated."
       redirect_to user_path(current_user)
     else
-      flash[:error] = "There was an error in the submission."
+      flash[:error] = "Opponent, date, and year must be filled or selected."
+      render :edit
     end   
   end
 
@@ -43,5 +46,9 @@ class GameStatsController < ApplicationController
 
   def set_game_stat
     @game_stat = GameStat.find(params[:id])
+  end
+
+  def set_game_stat_user
+    @user = User.find(params[:user_id])
   end
 end

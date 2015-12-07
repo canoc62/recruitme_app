@@ -13,7 +13,7 @@ describe SessionsController do
         expect(session[:user_id]).to eq(user.id)
       end
       it "redirects to the user show page" do
-        expect(response).to redirect_to user_path(user)
+        expect(response).to redirect_to user
       end
     end
 

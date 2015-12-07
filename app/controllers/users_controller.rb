@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :same_user, only: [:edit, :update]
-  
-  def index
-  end
 
   def show
   
   end
 
   def new
-    @user = User.new
+    if current_user
+      flash[:error] = "You must be logged out to create another profile."
+      redirect_to user_path(current_user)
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -39,10 +41,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-
-  end
-
   private
 
   def user_params
@@ -53,10 +51,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def same_user
-    if current_user != @user
-      flash[:error] = "You must be logged into correct account."
-      redirect_to root_path
-    end
-  end
 end
