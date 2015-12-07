@@ -67,33 +67,42 @@ describe UsersController do
 
   describe "GET edit" do
     let(:user) { Fabricate(:user) }
-
-    it "sets the @user instance variable" do
-      get :edit, id: user.id
-      expect(assigns(:user)).to be_instance_of(User)
-    end
+    
     it "redirects to the root path for unauthenticated users" do
       get :edit, id: user.id
       expect(response).to redirect_to root_path
     end
-    it "redirects to the root_path for users trying to access the edit page of other users" do
-      user_2 = Fabricate(:user)
-      session[:user_id] = user.id
-      get :edit, id: user_2.id
-      expect(response).to redirect_to root_path
+
+    context "with authenticated users" do
+      before { session[:user_id] = user.id }
+
+      it "sets the @user instance variable" do
+        get :edit, id: user.id
+        expect(assigns(:user)).to be_instance_of(User)
+      end
+      
+      context "trying to access the user edit page of other users" do
+        let(:user_2) { Fabricate(:user) }
+        before { get :edit, id: user_2.id }
+            
+        it "shows the flash error message" do
+          expect(flash[:error]).not_to be_empty
+        end
+        it "redirects to root path" do
+          expect(response).to redirect_to root_path
+        end
+      end
     end
   end
 
   describe "PATCH update" do
-    context "with unauthenticated or incorrectly authenticated users" do
+    context "with unauthenticated" do
       let(:user) { Fabricate(:user) }
-
+      before { patch :update, id: user.id }
       it "redirects to the root path" do
-        patch :update, id: user.id
         expect(response).to redirect_to root_path
       end
       it "shows flash error message" do
-        patch :update, id: user.id
         expect(flash[:error]).not_to be_empty
       end
     end
@@ -107,17 +116,23 @@ describe UsersController do
           patch :update, id: user.id, user: Fabricate.attributes_for(:user, first_name: "Jordan")
         end
 
-        it "redirects to the root_path for users trying to update the info of other users" do
-          user_2 = Fabricate(:user)
-          session[:user_id] = user.id
-          patch :update, id: user_2.id
-          expect(response).to redirect_to root_path
-        end
         it "shows the flash notice message" do
           expect(flash[:notice]).not_to be_empty
         end
         it "redirects to the user show page" do
           expect(response).to redirect_to user
+        end
+
+        context "user trying to update the info of other users" do
+          let(:user_2) { Fabricate(:user) }
+          before { patch :update, id: user_2.id }
+
+          it "shows the flash error message" do
+            expect(flash[:error]).not_to be_empty
+          end
+          it "redirects to root path" do
+            expect(response).to redirect_to root_path
+          end
         end
       end
 
