@@ -17,6 +17,7 @@ feature "User interacts with profile" do
     fill_in('City', with: "Compton")
     fill_in('State', with: "CA")
     fill_in('School', with: "Dominguez")
+    fill_in('Graduation year', with: 2006)
 
     click_button "Register"
 

@@ -17,25 +17,27 @@
     <dt>Email:</dt>
     <dd><%= @user.email %></dd>
     <dt>Age:</dt>
-    <dd><%= @user.age %><dd>  
+    <dd><%= @user.age %></dd>  
     <dt>Height:</dt>
     <dd><%= @user.height %></dd>
     <dt>Weight:</dt>
-    <dd><%= @user.weight %> lbs.<dd>
+    <dd><%= @user.weight %> lbs.</dd>
     <dt>State:</dt>
-    <dd><%= @user.state %><dd> 
+    <dd><%= @user.state %></dd> 
     <dt>City:</dt>
-    <dd><%= @user.city %><dd>
+    <dd><%= @user.city %></dd>
     <dt>School:</dt>
-    <dd><%= @user.school %><dd> 
+    <dd><%= @user.school %></dd>
+    <dt>Graduation year:</dt>
+    <dd><%= @user.graduation_year %></dd>
     <dt>GPA:</dt>
-    <dd><%= @user.gpa %><dd> 
+    <dd><%= @user.gpa %></dd> 
     <dt>Position(s):</dt>
     <dd>
       <% @user.positions.each do |p|%>
       <%= p.position_title %>
       <% end %>
-    <dd>         
+    </dd>         
   </dl>
 </div>
 

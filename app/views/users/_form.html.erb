@@ -44,9 +44,9 @@
       <%= f.label :school %>
       <%= f.text_field :school %>
     </div>
-    <div class='control-group>'>
-      <%= f.label :school_year %>
-      <%= f.collection_select(:school_year_id, SchoolYear.all, :id, :year) %>
+    <div class='control-group'>
+      <%= f.label :graduation_year %>
+      <%= f.number_field :graduation_year %>
     </div>
     <div class='control-group>'>
       <%= f.label :gpa %>

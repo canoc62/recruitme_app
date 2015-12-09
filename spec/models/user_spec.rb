@@ -14,7 +14,6 @@ describe User do
   it { should have_many(:player_positions) }
   it { should have_many(:positions).through(:player_positions) }
   it { should have_many(:game_stats) }
-  it { should belong_to(:school_year) }
 
   describe "#total_stat_category" do
     let(:user) { Fabricate(:user) }
