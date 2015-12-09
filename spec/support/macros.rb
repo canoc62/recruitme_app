@@ -10,9 +10,3 @@ def sign_in(user=nil)
   click_button "Login"
 end
 
-def create_user
-  visit root_path
-  click_button "Register"
-
-
-end

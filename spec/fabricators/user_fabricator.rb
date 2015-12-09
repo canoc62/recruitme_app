@@ -7,4 +7,5 @@ Fabricator(:user) do
   city 'Sherman Oaks'
   state 'CA'
   school 'Notre Dame High School'
+  graduation_year 2009
 end

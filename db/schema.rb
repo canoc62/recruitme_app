@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209090345) do
+ActiveRecord::Schema.define(version: 20151209102802) do
 
   create_table "game_stats", force: :cascade do |t|
     t.string   "opponent"
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 20151209090345) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "age"
+    t.integer  "age"
     t.string   "height"
-    t.string   "weight"
+    t.float    "weight"
     t.string   "city"
     t.string   "state"
     t.string   "school"

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Your profile was created. You are now one step closer to being recruited to play at the next level!"
       redirect_to user_path(@user)
     else
-      flash[:error] = "First_name, last_name, username, city, state, and school fields cannot be empty. Username must be unique."
+      flash[:error] = "First_name, last_name, username, city, state, school fields, and graduation year cannot be empty. Username must be unique."
       render :new
     end
   end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Your profile was updated!"
       redirect_to user_path(@user)
     else
-      flash[:error] = "First_name, last_name, city, state, and school fields cannot be empty." #DRY
+      flash[:error] = "First_name, last_name, city, state, school fields, and graduation year cannot be empty." #DRY
       render :edit
     end
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :password, :age, :height, :weight, :city, :state, :school, :gpa, :username, :email, :school_year_id, position_ids: [])#, game_stat_ids: [])
+    params.require(:user).permit(:first_name, :last_name, :password, :age, :height, :weight, :city, :state, :school, :gpa, :username, :email, :graduation_year, position_ids: [])#, game_stat_ids: [])
   end
 
   def set_user

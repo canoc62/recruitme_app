@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :school, presence: true
+  validates :graduation_year, presence: true
 
 
   def total_stat_category(year, category)
