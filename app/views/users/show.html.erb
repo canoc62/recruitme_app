@@ -41,33 +41,35 @@
   </dl>
 </div>
 
-<h5><%= @user.username %>'s Statistics <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in? && same_profile? %> </h5>
+<div id='stats'>
+  <h5><%= @user.username %>'s Statistics <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in? && same_profile? %> </h5>
 
-<ul class='nav nav-tabs'>
-  <li class='<%= 'active' if params[:tab].nil? %>'>
-    <%= link_to "Freshman Stats", user_path(@user) %>
-  </li>
-  <li class='<%= 'active' if params[:tab] == 'sophomore' %>'>
-    <%= link_to "Sophomore Stats", user_path(@user, tab: 'sophomore') %>
-  </li>
-  <li class='<%= 'active' if params[:tab] == 'junior' %>'>
-    <%= link_to "Junior Stats", user_path(@user, tab: 'junior') %>
-  </li>
-  <li class='<%= 'active' if params[:tab] == 'senior' %>'>
-    <%= link_to "Senior Stats", user_path(@user, tab: 'senior') %>
-  </li>
-</ul>
+  <ul class='nav nav-tabs'>
+    <li class='<%= 'active' if params[:tab].nil? %>'>
+      <%= link_to "Freshman Stats", user_path(@user) %>
+    </li>
+    <li class='<%= 'active' if params[:tab] == 'sophomore' %>'>
+      <%= link_to "Sophomore Stats", user_path(@user, tab: 'sophomore') %>
+    </li>
+    <li class='<%= 'active' if params[:tab] == 'junior' %>'>
+      <%= link_to "Junior Stats", user_path(@user, tab: 'junior') %>
+    </li>
+    <li class='<%= 'active' if params[:tab] == 'senior' %>'>
+      <%= link_to "Senior Stats", user_path(@user, tab: 'senior') %>
+    </li>
+  </ul>
 
-<% if params[:tab].nil? %>
-  <p></p>
-  <%= render 'user_game_stats', year: "Freshman" %>
-<% elsif params[:tab] == 'sophomore' %>
-  <p></p>
-  <%= render 'user_game_stats', year: "Sophomore" %>
-<% elsif params[:tab] == 'junior' %>
-  <p></p>
-  <%= render 'user_game_stats', year: "Junior" %>
-<% elsif params[:tab] == 'senior' %>
-  <p></p>
-  <%= render 'user_game_stats', year: "Senior" %>
-<% end %>
+  <% if params[:tab].nil? %>
+    <p></p>
+    <%= render 'user_game_stats', year: "Freshman" %>
+  <% elsif params[:tab] == 'sophomore' %>
+    <p></p>
+    <%= render 'user_game_stats', year: "Sophomore" %>
+  <% elsif params[:tab] == 'junior' %>
+    <p></p>
+    <%= render 'user_game_stats', year: "Junior" %>
+  <% elsif params[:tab] == 'senior' %>
+    <p></p>
+    <%= render 'user_game_stats', year: "Senior" %>
+  <% end %>
+</div>
