@@ -26,7 +26,7 @@
     </div>
     <div class='control-group>'>
       <%= f.label :height %>
-      <%= f.text_field :height %>
+      <%= f.select :height, options_for_select((48..96).to_a.map { |inch| convert_inch(inch) })%>
     </div>
     <div class='control-group>'>
       <%= f.label :weight %>
@@ -38,7 +38,7 @@
     </div>
     <div class='control-group>'>
       <%= f.label :state %>
-      <%= f.text_field :state %>
+      <%= f.select :state, options_for_select(us_states) %>
     </div>
     <div class='control-group>'>
       <%= f.label :school %>
@@ -59,3 +59,8 @@
     <%= f.submit (@user.new_record? ? 'Register' : 'Update Profile') , class: 'btn btn-success' %>
   <% end %>
 </div>
+
+
+
+
+

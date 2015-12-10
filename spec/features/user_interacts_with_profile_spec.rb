@@ -4,27 +4,32 @@ feature "User interacts with profile" do
   scenario "user creates and edits profile" do
     Position.create(position_title: "WR")
     Position.create(position_title: "CB")
-    
+
     go_to_register_page
     fill_in_required_info
     register
 
-    see_mandatory_info
+    expect_to_see_profile_pic
+    expect_to_see_mandatory_info
 
     check_if_dropdown_links_are_visible
 
     go_to_edit_profile_page
-    fill_in_additional_info
+    edit_info
     update_profile
 
-    see_mandatory_info
-    see_additional_info
+    expect_to_see_mandatory_info
+    expect_to_see_additional_info
   end
 
   def go_to_register_page
     visit root_path
     click_link "Register"
     expect(page).to have_content("Register")
+  end
+
+  def expect_to_see_profile_pic
+    expect(page).to have_css('img[@class=gravatar]')
   end
 
   def fill_in_required_info
@@ -36,7 +41,7 @@ feature "User interacts with profile" do
     end
     fill_in('Email', with: "seahawks25@gmail.com")
     fill_in('City', with: "Compton")
-    fill_in('State', with: "CA")
+    select('CA', from: 'user_state')
     fill_in('School', with: "Dominguez")
     fill_in('Graduation year', with: 2006)
   end
@@ -49,13 +54,13 @@ feature "User interacts with profile" do
     expect(page).to have_content(content)
   end
 
-  def see_mandatory_info
+  def expect_to_see_mandatory_info
     display_info "Richard"
     display_info "Sherman"
     display_info "shutdown25"
     display_info "seahawks25@gmail.com"
     display_info "Compton"
-    display_info "CA"
+    display_info 'CA'
     display_info "Dominguez"
     display_info 2006
   end
@@ -83,9 +88,10 @@ feature "User interacts with profile" do
     expect(page).to have_content("Edit Your Profile")
   end
 
-  def fill_in_additional_info
+  def edit_info
+    select('CA', from: 'user_state')
     fill_in('Age', with: 17)
-    fill_in('Height', with: "6'0")
+    select("6'0\"", from: 'user_height')
     fill_in('Weight', with: 185)
     fill_in('Gpa', with: 4.0)
     select("WR", from: 'user_position_ids')
@@ -96,7 +102,7 @@ feature "User interacts with profile" do
     click_button "Update Profile"
   end
 
-  def see_additional_info
+  def expect_to_see_additional_info
     display_info 17
     display_info "6'0"
     display_info 185
