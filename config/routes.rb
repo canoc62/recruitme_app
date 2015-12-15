@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     member do
       get '/edit_measurables', to: "users#edit_measurables"
-      patch '/update_measurables', to: "users#update"#_measurables"
+      patch '/update_measurables', to: "users#update"
     end
 
     resources :game_stats, only: [:new, :create, :edit, :update]

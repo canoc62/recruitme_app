@@ -61,7 +61,7 @@ describe UsersController do
     it "sets the @user instance variable" do
       user = Fabricate(:user)
       get :show, id: user.id
-      expect(assigns(:user)).to be_instance_of(User)
+      expect(assigns(:user)).to eq(user)
     end
   end
 
@@ -79,7 +79,7 @@ describe UsersController do
 
       it "sets the @user instance variable" do
         get :edit, id: user.id
-        expect(assigns(:user)).to be_instance_of(User)
+        expect(assigns(:user)).to eq(user)
       end
 
       context "trying to access the user edit page of other users" do
@@ -164,6 +164,10 @@ describe UsersController do
         get :edit_measurables, id: user.id
       end
 
+      it "sets the @user instance variable" do
+        expect(assigns(:user)).to eq(user)
+      end
+
       it "should redirect to edit_measurables_user path" do
         expect(response).to render_template 'users/edit_measurables'
       end
@@ -173,39 +177,7 @@ describe UsersController do
         before { get :edit_measurables, id: user_2.id }
 
         it_behaves_like "show error and go to root"
-        end
-    end
-  end
-
-#### delete later as only update action is needed
-  describe "PATCH update_measurables" do
-    let(:user) { Fabricate(:user) }
-
-    context "with unauthenticated users" do
-      before { patch :update_measurables, id: user.id }
-
-      it_behaves_like "show error and go to root"
-    end
-
-    context "with authenticated users" do
-      before { set_current_user(user) }
-
-      it "updates the current user's measurable attributes" do
-        patch :update, id: user.id, user: Fabricate.attributes_for(:user, forty: 4.5)
-        expect(user.reload.forty).to eq(4.5)
       end
-      it "redirects to the user show page" do
-        patch :update, id: user.id, user: Fabricate.attributes_for(:user, forty: 4.5)
-        expect(response).to redirect_to user_path(user)
-      end
-
-      context "user trying update the measurables of another user" do
-        let(:user_2) { Fabricate(:user) }
-        before { patch :update_measurables, id: user_2.id }
-
-        it_behaves_like "show error and go to root"
-        end
     end
-
   end
 end

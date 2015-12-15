@@ -24,12 +24,7 @@ feature "User interacts with profile" do
     edit_measurables
     fill_in_measurables
     update_measurables
-
-    #within(:xpath, "//div[@id='stats']") do
-      #click_link "Measurables"
-    #end
-    #expect_to_see_measurables
-
+    expect_to_see_measurables
   end
 
   def go_to_register_page

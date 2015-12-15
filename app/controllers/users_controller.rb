@@ -50,27 +50,12 @@ class UsersController < ApplicationController
     end
   end
 
-=begin
-  def update_measurables
-    require 'pry'
-    #binding.pry
-    if @user.update(user_params)#(user_measurable_params)
-      flash[:notice] = "Your measurables were updated!"
-      redirect_to user_path(@user)
-    end
-  end
-=end
-
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :password, :age, :height, :weight, :city, :state, :school, :gpa, :username, :email, :graduation_year, 
     :forty, :bench_press, :squat, :vertical, :shuttle, :three_cone, :SAT, :ACT, position_ids: [])
   end
-
-  #def user_measurable_params
-    #params.require(:user).permit(:forty, :bench_press, :squat, :vertical, :shuttle, :three_cone, :SAT, :ACT)
-  #end
 
   def set_user
     @user = User.find(params[:id])
