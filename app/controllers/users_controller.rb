@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :same_user, only: [:edit, :update]
-
+  before_action :set_user, only: [:show, :edit, :update, :edit_measurables, :update_measurables]
+  before_action :same_user, only: [:edit, :update, :edit_measurables, :update_measurables]
+  
   def show
   
   end
@@ -41,11 +41,36 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_measurables
+    if current_user
+      render :edit_measurables
+    else
+      flash[:error] = "Please log in."
+      redirect_to root_path
+    end
+  end
+
+=begin
+  def update_measurables
+    require 'pry'
+    #binding.pry
+    if @user.update(user_params)#(user_measurable_params)
+      flash[:notice] = "Your measurables were updated!"
+      redirect_to user_path(@user)
+    end
+  end
+=end
+
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :password, :age, :height, :weight, :city, :state, :school, :gpa, :username, :email, :graduation_year, position_ids: [])#, game_stat_ids: [])
+    params.require(:user).permit(:first_name, :last_name, :password, :age, :height, :weight, :city, :state, :school, :gpa, :username, :email, :graduation_year, 
+    :forty, :bench_press, :squat, :vertical, :shuttle, :three_cone, :SAT, :ACT, position_ids: [])
   end
+
+  #def user_measurable_params
+    #params.require(:user).permit(:forty, :bench_press, :squat, :vertical, :shuttle, :three_cone, :SAT, :ACT)
+  #end
 
   def set_user
     @user = User.find(params[:id])

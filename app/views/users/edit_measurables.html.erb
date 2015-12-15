@@ -1,0 +1,40 @@
+<div>
+  <h1>Edit Measurables</h1>
+</div>
+<div class= 'well'>
+  <%= form_for @user do |f| %>
+    <div class='control-group'>
+      <%= f.label :forty %>
+      <%= f.number_field :forty, step: 0.01 %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :bench_press %>
+      <%= f.number_field :bench_press %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :squat %>
+      <%= f.number_field :squat %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :vertical %>
+      <%= f.number_field :vertical %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :shuttle %>
+      <%= f.number_field :shuttle, step: 0.01 %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :three_cone %>
+      <%= f.number_field :three_cone, step: 0.01 %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :SAT %>
+      <%= f.number_field :SAT %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :ACT %>
+      <%= f.number_field :ACT %>
+    </div>
+    <%= f.submit 'Update Measurables' , class: 'btn btn-success' %>
+  <% end %>
+</div>

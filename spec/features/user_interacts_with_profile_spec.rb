@@ -20,6 +20,16 @@ feature "User interacts with profile" do
 
     expect_to_see_mandatory_info
     expect_to_see_additional_info
+
+    edit_measurables
+    fill_in_measurables
+    update_measurables
+
+    #within(:xpath, "//div[@id='stats']") do
+      #click_link "Measurables"
+    #end
+    #expect_to_see_measurables
+
   end
 
   def go_to_register_page
@@ -70,14 +80,7 @@ feature "User interacts with profile" do
       find_link('View Profile').visible?
       find_link('Logout').visible?
       find_link("Edit Profile").visible?
-    end
-  end
-
-  def check_if_dropdown_links_are_visible
-    within(:xpath,"//ul[@class='dropdown-menu']") do
-      find_link('View Profile').visible?
-      find_link('Logout').visible?
-      find_link("Edit Profile").visible?
+      find_link("Edit Measurables").visible?
     end
   end
 
@@ -109,5 +112,38 @@ feature "User interacts with profile" do
     display_info 4.0
     display_info "WR"
     display_info "CB"
+  end
+
+  def edit_measurables
+    within(:xpath,"//ul[@class='dropdown-menu']") do
+      click_link "Edit Measurables"
+      expect(page).to have_content("Edit Measurables")
+    end
+  end
+
+  def fill_in_measurables
+    fill_in('Forty', with: 4.5)
+    fill_in('Bench press', with: 250)
+    fill_in('Squat', with: 435)
+    fill_in('Vertical', with: 32)
+    fill_in('Shuttle', with: 4.2)
+    fill_in('Three cone', with: 4.1)
+    fill_in('Sat', with: 1800)
+    fill_in('Act', with: 30)
+  end
+
+  def update_measurables
+    click_button "Update Measurables"
+  end
+
+  def expect_to_see_measurables
+    expect(page).to have_content(4.5)
+    expect(page).to have_content(250)
+    expect(page).to have_content(435)
+    expect(page).to have_content(32)
+    expect(page).to have_content(4.2)
+    expect(page).to have_content(4.1)
+    expect(page).to have_content(1800)
+    expect(page).to have_content(30)
   end
 end

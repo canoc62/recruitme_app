@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
   resources :users do
+
+    member do
+      get '/edit_measurables', to: "users#edit_measurables"
+      patch '/update_measurables', to: "users#update"#_measurables"
+    end
+
     resources :game_stats, only: [:new, :create, :edit, :update]
   end
   # The priority is based upon order of creation: first created -> highest priority.

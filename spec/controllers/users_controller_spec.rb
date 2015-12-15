@@ -68,9 +68,10 @@ describe UsersController do
   describe "GET edit" do
     let(:user) { Fabricate(:user) }
     
-    it "redirects to the root path for unauthenticated users" do
-      get :edit, id: user.id
-      expect(response).to redirect_to root_path
+    context "with unauthenticated users" do
+      before { get :edit, id: user.id }
+    
+      it_behaves_like "show error and go to root"
     end
 
     context "with authenticated users" do
@@ -95,23 +96,21 @@ describe UsersController do
       let(:user) { Fabricate(:user) }
       before { patch :update, id: user.id }
 
-      it "redirects to the root path" do
-        expect(response).to redirect_to root_path
-      end
-      it "shows flash error message" do
-        expect(flash[:error]).not_to be_empty
-      end
+      it_behaves_like "show error and go to root"
     end
 
     context "with authenticated users" do
 
       context "with valid input" do 
-        let(:user) { Fabricate(:user) }
+        let(:user) { Fabricate(:user, first_name: "Chris") }
         before do
           set_current_user(user)
           patch :update, id: user.id, user: Fabricate.attributes_for(:user, first_name: "Jordan")
         end
 
+        it "updates the current user's profile" do
+          expect(user.reload.first_name).to eq("Jordan")
+        end
         it "shows the flash notice message" do
           expect(flash[:notice]).not_to be_empty
         end
@@ -148,5 +147,65 @@ describe UsersController do
         end
       end
     end
+  end
+
+  describe "GET edit_measurables" do
+    let(:user) { Fabricate(:user) }
+
+    context "with unauthenticated users" do
+      before { get :edit_measurables, id: user.id }
+
+      it_behaves_like "show error and go to root"
+    end
+
+    context "with authenticated users" do
+      before do 
+        set_current_user(user) 
+        get :edit_measurables, id: user.id
+      end
+
+      it "should redirect to edit_measurables_user path" do
+        expect(response).to render_template 'users/edit_measurables'
+      end
+
+      context "user trying to access the edit measurables page of another user" do
+        let(:user_2) { Fabricate(:user) }
+        before { get :edit_measurables, id: user_2.id }
+
+        it_behaves_like "show error and go to root"
+        end
+    end
+  end
+
+#### delete later as only update action is needed
+  describe "PATCH update_measurables" do
+    let(:user) { Fabricate(:user) }
+
+    context "with unauthenticated users" do
+      before { patch :update_measurables, id: user.id }
+
+      it_behaves_like "show error and go to root"
+    end
+
+    context "with authenticated users" do
+      before { set_current_user(user) }
+
+      it "updates the current user's measurable attributes" do
+        patch :update, id: user.id, user: Fabricate.attributes_for(:user, forty: 4.5)
+        expect(user.reload.forty).to eq(4.5)
+      end
+      it "redirects to the user show page" do
+        patch :update, id: user.id, user: Fabricate.attributes_for(:user, forty: 4.5)
+        expect(response).to redirect_to user_path(user)
+      end
+
+      context "user trying update the measurables of another user" do
+        let(:user_2) { Fabricate(:user) }
+        before { patch :update_measurables, id: user_2.id }
+
+        it_behaves_like "show error and go to root"
+        end
+    end
+
   end
 end

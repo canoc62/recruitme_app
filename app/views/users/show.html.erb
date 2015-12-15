@@ -39,9 +39,31 @@
       <% end %>
     </dd>         
   </dl>
+
+  
+  <dl class='dl-horizontal'>
+    <dt><h4 class='dl-horizontal'> Measurables</h4></dt>
+    <dd></dd>
+    <dt>Forty:</dt>
+    <dd><%= @user.forty %> s</dd>
+    <dt>Bench Press:</dt>
+    <dd><%= @user.bench_press %> lbs.</dd>
+    <dt>Squat:</dt>
+    <dd><%= @user.squat %> lbs.</dd>
+    <dt>Vertical:</dt>
+    <dd><%= @user.vertical %></dd>  
+    <dt>Shuttle:</dt>
+    <dd><%= @user.shuttle %> s</dd>
+    <dt>Three Cone:</dt>
+    <dd><%= @user.three_cone %> s</dd>
+    <dt>SAT:</dt>
+    <dd><%= @user.SAT %></dd>
+    <dt>ACT:</dt>
+    <dd><%= @user.ACT %></dd>
+  </dl>
 </div>
 
-<div id='stats'>
+<div class='well' id='stats'>
   <h5><%= @user.username %>'s Statistics <%= link_to "Add Game Statistics", new_user_game_stat_path(@user) if logged_in? && same_profile? %> </h5>
 
   <ul class='nav nav-tabs'>
