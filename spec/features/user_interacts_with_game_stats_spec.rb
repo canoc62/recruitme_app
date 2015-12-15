@@ -71,12 +71,9 @@ feature "User adds game stat" do
     fill_in("Pat made", with: 5)
     click_button "Submit Stats"
 
-    # Edit stat
     click_link "Senior Stats"
 
     within("//div[@id=stats]") do
-      # Going to have to find a way to differentiate multiple Edit links
-      # when more game stats are added. (Solve the find exact row, column problem).
       click_link "Edit"
     end
     within(:xpath,"//div//h1") do
@@ -86,7 +83,6 @@ feature "User adds game stat" do
     fill_in("Opponent", with: "Compton")
     click_button "Update Stats"
 
-    # Create another stat
     click_link "Add Game Statistics"
 
     select("Senior", from: 'game_stat_game_stat_year')
@@ -99,7 +95,6 @@ feature "User adds game stat" do
 
     click_link "Senior Stats"
 
-  # Validates presence of content on page
     expect(page).to have_content("Senior")
     expect(page).to have_content("2005-09-01")
     expect(page).to have_content("Compton")
@@ -113,16 +108,9 @@ feature "User adds game stat" do
     expect(page).to have_content("2005-10-01")
     expect(page).to have_content("246")
 
-  # Validates absence of content on page
     click_link "Freshman Stats"
 
     expect(page).not_to have_content("Inglewood")
-
-
-  # Test for correct location of content in table
-    #binding.pry
-    #find_within_cell(2,1,"Freshman")
-
   end
 
   def find_within_cell(row_num, col_num, content)

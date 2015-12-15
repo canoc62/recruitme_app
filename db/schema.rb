@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209102802) do
+ActiveRecord::Schema.define(version: 20151215231725) do
 
   create_table "game_stats", force: :cascade do |t|
     t.string   "opponent"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20151209102802) do
     t.float    "forty"
     t.integer  "bench_press"
     t.integer  "squat"
-    t.integer  "vertical"
+    t.float    "vertical"
     t.float    "shuttle"
     t.float    "three_cone"
     t.integer  "SAT"
