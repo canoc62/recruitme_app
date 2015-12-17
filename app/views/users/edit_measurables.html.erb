@@ -4,11 +4,11 @@
 <div class= 'well'>
   <%= form_for @user do |f| %>
     <div class='control-group'>
-      <%= f.label :forty %>
+      <%= f.label :forty, '40' %>
       <%= f.number_field :forty, step: 0.01 %> s
     </div>
     <div class='control-group'>
-      <%= f.label :bench_press %>
+      <%= f.label :bench_press, 'Bench Press' %>
       <%= f.number_field :bench_press %> lbs.
     </div>
     <div class='control-group'>
@@ -20,19 +20,23 @@
       <%= f.number_field :vertical %> in.
     </div>
     <div class='control-group'>
+      <%= f.label :broad_jump, 'Broad Jump' %>
+      <%= f.number_field :broad_jump %> in.
+    </div>
+    <div class='control-group'>
       <%= f.label :shuttle %>
       <%= f.number_field :shuttle, step: 0.01 %> s
     </div>
     <div class='control-group'>
-      <%= f.label :three_cone %> 
+      <%= f.label :three_cone, 'Three Cone' %> 
       <%= f.number_field :three_cone, step: 0.01 %> s
     </div>
     <div class='control-group'>
-      <%= f.label :SAT %>
+      <%= f.label :SAT, 'SAT' %>
       <%= f.number_field :SAT %>
     </div>
     <div class='control-group'>
-      <%= f.label :ACT %>
+      <%= f.label :ACT, 'ACT' %>
       <%= f.number_field :ACT %>
     </div>
     <%= f.submit 'Update Measurables' , class: 'btn btn-success' %>

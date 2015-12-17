@@ -1,11 +1,11 @@
 <div class= 'well'>
   <%= form_for @user do |f| %>
     <div class='control-group'>
-      <%= f.label :first_name %>
+      <%= f.label :first_name, 'First Name' %>
       <%= f.text_field :first_name %>
     </div>
     <div class='control-group>'>
-      <%= f.label :last_name %>
+      <%= f.label :last_name, 'Last Name' %>
       <%= f.text_field :last_name %>
     </div>
     <div class='control-group>'>
@@ -45,15 +45,15 @@
       <%= f.text_field :school %>
     </div>
     <div class='control-group'>
-      <%= f.label :graduation_year %>
+      <%= f.label :graduation_year, 'Graduation Year' %>
       <%= f.number_field :graduation_year %>
     </div>
     <div class='control-group>'>
-      <%= f.label :gpa %>
+      <%= f.label :gpa, 'GPA' %>
       <%= f.number_field :gpa, step: 'any' %>
     </div>
     <div class='control-group>'>
-      <%= f.label :position %><b>(s)</b>
+      <%= f.label :position, 'Position(s)' %>
       <%= f.collection_select(:position_ids, Position.all, :id, :position_title, {}, {:multiple => true}) %>
     </div>
     <%= f.submit (@user.new_record? ? 'Register' : 'Update Profile') , class: 'btn btn-success' %>

@@ -21,7 +21,7 @@
     <dt>Height:</dt>
     <dd><%= @user.height %></dd>
     <dt>Weight:</dt>
-    <dd><%= @user.weight %> lbs.</dd>
+    <dd><%= @user.weight %> <%= 'lbs.' if @user.weight %></dd>
     <dt>State:</dt>
     <dd><%= @user.state %></dd> 
     <dt>City:</dt>
@@ -44,18 +44,20 @@
   <dl class='dl-horizontal'>
     <dt><h4 class='dl-horizontal'> Measurables</h4></dt>
     <dd></dd>
-    <dt>Forty:</dt>
-    <dd><%= @user.forty %> s</dd>
+    <dt>40:</dt>
+    <dd><%= @user.forty %> <%= 's' if @user.forty %></dd>
     <dt>Bench Press:</dt>
-    <dd><%= @user.bench_press %> lbs.</dd>
+    <dd><%= @user.bench_press %> <%= 'lbs.' if @user.bench_press %></dd>
     <dt>Squat:</dt>
-    <dd><%= @user.squat %> lbs.</dd>
+    <dd><%= @user.squat %> <%= 'lbs.' if @user.squat %></dd>
     <dt>Vertical:</dt>
-    <dd><%= @user.vertical %> in.</dd>  
+    <dd><%= @user.vertical %> <%= 'in.' if @user.vertical %></dd>  
+    <dt>Broad Jump:</dt>
+    <dd><%= @user.broad_jump %> <%= 'in.' if @user.broad_jump %></dd>  
     <dt>Shuttle:</dt>
-    <dd><%= @user.shuttle %> s</dd>
+    <dd><%= @user.shuttle %> <%= 's' if @user.shuttle %></dd>
     <dt>Three Cone:</dt>
-    <dd><%= @user.three_cone %> s</dd>
+    <dd><%= @user.three_cone %> <%= 's' if @user.three_cone %></dd>
     <dt>SAT:</dt>
     <dd><%= @user.SAT %></dd>
     <dt>ACT:</dt>

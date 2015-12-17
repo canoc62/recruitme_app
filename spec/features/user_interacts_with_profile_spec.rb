@@ -38,8 +38,8 @@ feature "User interacts with profile" do
   end
 
   def fill_in_required_info
-    fill_in('First name', with: "Richard")
-    fill_in('Last name', with: "Sherman")
+    fill_in('First Name', with: "Richard")
+    fill_in('Last Name', with: "Sherman")
     within("//div.well") do
       fill_in('Username', with: "shutdown25")
       fill_in('Password', with: "password")
@@ -48,7 +48,7 @@ feature "User interacts with profile" do
     fill_in('City', with: "Compton")
     select('CA', from: 'user_state')
     fill_in('School', with: "Dominguez")
-    fill_in('Graduation year', with: 2006)
+    fill_in('Graduation Year', with: 2006)
   end
 
   def register
@@ -91,7 +91,7 @@ feature "User interacts with profile" do
     fill_in('Age', with: 17)
     select("6'0\"", from: 'user_height')
     fill_in('Weight', with: 185)
-    fill_in('Gpa', with: 4.0)
+    fill_in('GPA', with: 4.0)
     select("WR", from: 'user_position_ids')
     select("CB", from: 'user_position_ids')
   end
@@ -117,14 +117,15 @@ feature "User interacts with profile" do
   end
 
   def fill_in_measurables
-    fill_in('Forty', with: 4.5)
-    fill_in('Bench press', with: 250)
+    fill_in('40', with: 4.5)
+    fill_in('Bench Press', with: 250)
     fill_in('Squat', with: 435)
     fill_in('Vertical', with: 32)
+    fill_in('Broad Jump', with: 100)
     fill_in('Shuttle', with: 4.2)
-    fill_in('Three cone', with: 4.1)
-    fill_in('Sat', with: 1800)
-    fill_in('Act', with: 30)
+    fill_in('Three Cone', with: 4.1)
+    fill_in('SAT', with: 1800)
+    fill_in('ACT', with: 30)
   end
 
   def update_measurables
@@ -136,6 +137,7 @@ feature "User interacts with profile" do
     expect(page).to have_content(250)
     expect(page).to have_content(435)
     expect(page).to have_content(32)
+    expect(page).to have_content(100)
     expect(page).to have_content(4.2)
     expect(page).to have_content(4.1)
     expect(page).to have_content(1800)

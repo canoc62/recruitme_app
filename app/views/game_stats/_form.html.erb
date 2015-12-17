@@ -1,7 +1,7 @@
 <div class= 'well'>
   <%= form_for [@user, @game_stat] do |f| %>
     <div class='control-group'>
-      <%= f.label :game_stat_year %>
+      <%= f.label :game_stat_year, 'Year' %>
       <%= f.select :game_stat_year, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"]) %>
     </div>
     <div class='control-group'>
@@ -13,47 +13,47 @@
       <%= f.text_field :opponent %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pass_attempts %>
+      <%= f.label :pass_attempts, 'Pass Att' %>
       <%= f.number_field :pass_attempts %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pass_completions %>
+      <%= f.label :pass_completions, 'Pass Comp' %>
       <%= f.number_field :pass_completions %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pass_yards %>
+      <%= f.label :pass_yards, 'Pass Yds' %>
       <%= f.number_field :pass_yards %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pass_tds %>
+      <%= f.label :pass_tds, 'Pass TD' %>
       <%= f.number_field :pass_tds %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pass_int %>
+      <%= f.label :pass_int, 'Pass Int' %>
       <%= f.number_field :pass_int %>
     </div>
     <div class='control-group>'>
-      <%= f.label :rush_attempts %>
+      <%= f.label :rush_attempts, 'Rush Att' %>
       <%= f.number_field :rush_attempts %>
     </div>
     <div class='control-group>'>
-      <%= f.label :rush_yards %>
+      <%= f.label :rush_yards, 'Rush Yds' %>
       <%= f.number_field :rush_yards %>
     </div>
     <div class='control-group>'>
-      <%= f.label :rush_tds %>
+      <%= f.label :rush_tds, 'Rush TD' %>
       <%= f.number_field :rush_tds %>
     </div>
     <div class='control-group>'>
-      <%= f.label :receptions %>
+      <%= f.label :receptions, 'Rec' %>
       <%= f.number_field :receptions %>
     </div>
     <div class='control-group>'>
-      <%= f.label :receiving_yards %>
+      <%= f.label :receiving_yards, 'Rec Yds' %>
       <%= f.number_field :receiving_yards %>
     </div>
     <div class='control-group>'>
-      <%= f.label :receiving_tds %>
+      <%= f.label :receiving_tds, 'Rec TD' %>
       <%= f.number_field :receiving_tds %>
     </div>
     <div class='control-group>'>
@@ -61,7 +61,7 @@
       <%= f.number_field :fumbles %>
     </div>
     <div class='control-group>'>
-      <%= f.label :fumbles_lost%>
+      <%= f.label :fumbles_lost, 'Fumbles Lost' %>
       <%= f.number_field :fumbles_lost %>
     </div>
     <div class='control-group>'>
@@ -73,23 +73,23 @@
       <%= f.number_field :sacks %>
     </div>
     <div class='control-group>'>
-      <%= f.label :interceptions %>
+      <%= f.label :interceptions, 'Int' %>
       <%= f.number_field :interceptions %>
     </div>
     <div class='control-group>'>
-      <%= f.label :field_goal_attempts %>
+      <%= f.label :field_goal_attempts, 'FGA Att' %>
       <%= f.number_field :field_goal_attempts %>
     </div>
     <div class='control-group>'>
-      <%= f.label :field_goals_made %>
+      <%= f.label :field_goals_made, 'FGA Made' %>
       <%= f.number_field :field_goals_made %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pat_attempts %>
+      <%= f.label :pat_attempts, 'PAT Att' %>
       <%= f.number_field :pat_attempts %>
     </div>
     <div class='control-group>'>
-      <%= f.label :pat_made %>
+      <%= f.label :pat_made, 'PAT Made' %>
       <%= f.number_field :pat_made %>
     </div>
     <%= f.submit (@game_stat.new_record? ? 'Submit Stats' : 'Update Stats') , class: 'btn btn-success' %>
